@@ -1,3 +1,5 @@
+NOTE!! This repo is mostly a clone of facebook's fasttext: https://github.com/facebookresearch/fastText which I did not write. I only added the bits about text prep and horror author classification.
+
 # fastText
 
 fastText is a library for efficient learning of word representations and sentence classification.
