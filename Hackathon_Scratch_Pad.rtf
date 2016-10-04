@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Consolas;\f1\fnil\fcharset0 Menlo-Regular;\f2\fswiss\fcharset0 ArialMT;
+\f3\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red27\green29\blue31;\red235\green236\blue237;\red255\green255\blue255;
+\red36\green38\blue41;\red104\green26\blue29;\red43\green39\blue19;\red38\green38\blue38;\red245\green245\blue245;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 grep -r -l 'searchtext' . | sort | uniq | xargs perl -e "s/matchtext/replacetext/" -pi\
+\
+\pard\pardeftab720\sl300\partightenfactor0
+\cf2 sed -i -e 's/abc/XYZ/g' /tmp/file.txt\
+\pard\pardeftab720\sl300\partightenfactor0
+\cf2 cat in.org | sed -e 's/[.]*/|/g' > out.org\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 sed -i -e 's/[.]/OMNOMNOM/g' test2.txt\
+\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 tr , '\\n' < file
+\f2 \cb4  \
+cat file | tr , '\\n' \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 tr god dog < test2.txt > test3.txt\
+\
+okay recursive didn\'92t work\
+\
+also tr is just single character to single character, argh\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\fs26 \cf5 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec5 sed \cf6 \strokec6 "s/\\(1234\\)/\\n\\1/g"\cf5 \strokec5  input.txt > output.txt\cf7 \strokec7 \
+\
+strip out header?\
+use tr to delete current line breaks\
+add period to beginning of file\
+use sed(?) to replace each period with \\n__label__SHELLEY or \\n__label__BLACKWOOD\
+\
+\cf5 \strokec5 tr -d \cf6 \strokec6 '\\n'\cf5 \strokec5  < input.txt > output.txt\cf7 \strokec7 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 tr -d '\\n' < test4.txt > test5.txt\
+\
+thought: use a filler in the meantime, then replace it with a line break using tr\
+need to make sure when line breaks are removed words don\'92t get smashed together\'85 or do I care?\
+\
+tr -d '\\n' < test4.txt > test5.txt\
+sed "s/[.]/\\.__label__SHELLEY /g" test5.txt > test6.txt\
+tr '.' '\\n' < test6.txt > test7.txt \
+\
+bottom line is blank, again, but do I care?\
+\
+BW1 is Bright Messenger\
+BW2 is Day and Night Stories\
+S1 is Mathilda\
+S2 is The Last Man\
+\
+okay, there\'92s these annoying ^M\'92s\'85 but do I care?\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 :s/^M$//\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 will remove the annoying ^M\'92s\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f2\fs26 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2  
+\f0 \cb3 :%s/^M/\\r/g\
+\
+:e ++enc=utf16\
+\
+okay, I\'92m just gonna try it with the annoying ^Ms, why not?\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f3\fs32 \cf8 \cb4 \strokec8 cat sample1.txt sample2.txt sample3.txt > sample-all.txt\
+\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f2\fs30 \cf2 \strokec2  
+\f0\fs26 \cb3 git remote -v\
+\
+horror-train.txt is a training set to differentiate Mary Shelley from Algernon Blackwood\
+\
+\pard\pardeftab720\sl380\partightenfactor0
+
+\fs28 \cf8 \cb9 \strokec8 ./fasttext supervised -input data/horror-train.txt -output model-horror\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f0\fs28 \cf8 \cb9 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec8 ./fasttext predict model-horror.bin S3.txt k\
+\
+what are the most and least recognizable lines from each author\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+}

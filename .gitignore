@@ -1,0 +1,10 @@
+.*.swp
+*.o
+*.bin
+*.vec
+data
+fasttext
+result
+.RData
+.Rapp.history
+.Rhistory
